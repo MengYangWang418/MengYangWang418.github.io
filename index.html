@@ -15,7 +15,42 @@
     <a href="#hero" class="dot active" data-target="hero" aria-label="首页"></a>
     <a href="#gallery" class="dot" data-target="gallery" aria-label="798艺术馆"></a>
     <a href="#qinhuangdao" class="dot" data-target="qinhuangdao" aria-label="秦皇岛"></a>
+    <a href="#greatwall" class="dot" data-target="greatwall" aria-label="长城"></a>
+    <a href="#universal" class="dot" data-target="universal" aria-label="北京环球影城"></a>
+    <a href="#gugong" class="dot" data-target="gugong" aria-label="故宫"></a>
+    <a href="#chengde" class="dot" data-target="chengde" aria-label="承德"></a>
+    <a href="#shenzhen" class="dot" data-target="shenzhen" aria-label="深圳环海"></a>
+    <a href="#laojiu" class="dot" data-target="laojiu" aria-label="老舅演唱会"></a>
+    <a href="#disney" class="dot" data-target="disney" aria-label="上海迪士尼"></a>
+    <a href="#xusong" class="dot" data-target="xusong" aria-label="许嵩呼吸之野"></a>
+    <a href="#nanyang" class="dot" data-target="nanyang" aria-label="南阳老家"></a>
+    <a href="#jixi" class="dot" data-target="jixi" aria-label="鸡西老家"></a>
+    <a href="#cat" class="dot" data-target="cat" aria-label="我们家的小家伙"></a>
   </nav>
+
+  <!-- Floating "next station" pill — always visible at the bottom,
+       text/href updated by script.js based on the current page. -->
+  <a id="next-pill" class="next-pill" href="#gallery" aria-label="下一站">
+    <span class="next-pill-text">下一站 · 798 艺术馆</span>
+    <span class="next-pill-arrow" aria-hidden="true">↓</span>
+  </a>
+
+  <!-- Background music · starts muted-autoplaying, unmutes on first
+       user gesture (browsers block autoplay with sound by default). -->
+  <audio id="bgm" loop autoplay muted playsinline preload="auto">
+    <source src="assets/music.m4a" type="audio/mp4" />
+  </audio>
+
+  <button id="music-toggle" class="music-btn is-paused" type="button"
+          aria-label="播放背景音乐" title="播放 / 暂停背景音乐">
+    <svg class="music-icon" viewBox="0 0 24 24" width="20" height="20"
+         fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M9 18V5l12-2v13" />
+      <circle cx="6" cy="18" r="3" />
+      <circle cx="18" cy="16" r="3" />
+    </svg>
+  </button>
 
   <main class="snap-container">
     <!-- ============== PAGE 1 ：HERO ============== -->
@@ -110,9 +145,6 @@
         </figure>
       </div>
 
-      <footer class="gallery-footer">
-        <a href="#qinhuangdao" class="back-top next" aria-label="前往秦皇岛">下一站 · 秦皇岛 ↓</a>
-      </footer>
     </section>
 
     <!-- ============== PAGE 3 ：QINHUANGDAO ============== -->
@@ -172,9 +204,626 @@
         </figure>
       </div>
 
-      <footer class="gallery-footer">
-        <a href="#hero" class="back-top light" aria-label="返回首页">↑ 回到我们的开始</a>
-      </footer>
+    </section>
+
+    <!-- ============== PAGE 4 ：GREAT WALL ============== -->
+    <section id="greatwall" class="page mountain">
+      <div class="mountain-bg" aria-hidden="true"></div>
+      <div class="mountain-clouds" aria-hidden="true"></div>
+
+      <header class="gallery-header">
+        <p class="kicker dark">THE GREAT WALL · 不到长城非好汉</p>
+        <h2>长城 · 把云走过</h2>
+        <p class="gallery-sub">登一段，看远山。风很大，人很小，故事很长。</p>
+      </header>
+
+      <div class="grid">
+        <figure class="card reveal">
+          <div class="card-img">
+            <img src="assets/gw_arch.png" alt="拱门下的侧脸" loading="lazy" />
+          </div>
+          <figcaption>
+            <span class="num">01</span>
+            <h3>拱门下</h3>
+            <p>砖缝里的阳光，耳机里的歌单。我说要听完这首才往上爬。</p>
+          </figcaption>
+        </figure>
+
+        <figure class="card reveal">
+          <div class="card-img contain" style="--img: url('assets/gw_family.png');">
+            <img src="assets/gw_family.png" alt="和妈妈一起的合影" loading="lazy" />
+          </div>
+          <figcaption>
+            <span class="num">02</span>
+            <h3>和妈妈一起</h3>
+            <p>这一张是和妈妈的合影。被认真带在身边的人，才有资格出现在这里。</p>
+          </figcaption>
+        </figure>
+
+        <figure class="card reveal">
+          <div class="card-img">
+            <img src="assets/gw_mountains.png" alt="长城远眺的群山" loading="lazy" />
+          </div>
+          <figcaption>
+            <span class="num">03</span>
+            <h3>极目千山</h3>
+            <p>登顶那一刻，城墙伸向远处的山脊，云压得很低。原来"远方"是有形状的。</p>
+          </figcaption>
+        </figure>
+
+        <figure class="card reveal">
+          <div class="card-img">
+            <img src="assets/gw_freedom.png" alt="张开双臂迎风" loading="lazy" />
+          </div>
+          <figcaption>
+            <span class="num">04</span>
+            <h3>风很大</h3>
+            <p>张开双臂，让风把这一年的事情都吹走。城墙上回头看你，正笑得很大声。</p>
+          </figcaption>
+        </figure>
+      </div>
+
+    </section>
+
+    <!-- ============== PAGE 5 ：UNIVERSAL BEIJING ============== -->
+    <section id="universal" class="page universe">
+      <div class="universe-bg" aria-hidden="true"></div>
+      <div class="snow-layer snow-1" aria-hidden="true"></div>
+      <div class="snow-layer snow-2" aria-hidden="true"></div>
+
+      <header class="gallery-header">
+        <p class="kicker dark">UNIVERSAL · BEIJING</p>
+        <h2>北京环球 · 雪日的电影</h2>
+        <p class="gallery-sub">那天下了好大的雪，整个园区像被按下了「电影开机」键。</p>
+      </header>
+
+      <div class="grid">
+        <figure class="card reveal">
+          <div class="card-img">
+            <img src="assets/usb_lake_my.png" alt="湖边的合影 · 我" loading="lazy" />
+          </div>
+          <figcaption>
+            <span class="num">01</span>
+            <h3>湖那一头</h3>
+            <p>橙色的栏杆、白色的湖面、说不清的灰蓝天空。我先给你拍了一张。</p>
+          </figcaption>
+        </figure>
+
+        <figure class="card reveal">
+          <div class="card-img">
+            <img src="assets/usb_lake_zb.png" alt="湖边的合影 · 你" loading="lazy" />
+          </div>
+          <figcaption>
+            <span class="num">02</span>
+            <h3>湖这一头</h3>
+            <p>同一座桥、同一道栏杆，换我来站。一前一后的两张照片，是只有我们才懂的暗号。</p>
+          </figcaption>
+        </figure>
+
+        <figure class="card reveal">
+          <div class="card-img">
+            <img src="assets/usb_minion.png" alt="小黄人乐园门口" loading="lazy" />
+          </div>
+          <figcaption>
+            <span class="num">03</span>
+            <h3>雪里的小黄人</h3>
+            <p>「Minion Land · 小黄人乐园」，连小黄人都戴上了厚厚的雪帽子。也太可爱了吧。</p>
+          </figcaption>
+        </figure>
+
+        <figure class="card reveal">
+          <div class="card-img">
+            <img src="assets/usb_car.png" alt="复古红色 BMW · Mel's Drive-In" loading="lazy" />
+          </div>
+          <figcaption>
+            <span class="num">04</span>
+            <h3>红车比心</h3>
+            <p>Mel's Drive-In 门口那辆复古红 BMW，配上你比的那个✌️，整个画面就自动加滤镜了。</p>
+          </figcaption>
+        </figure>
+      </div>
+
+    </section>
+
+    <!-- ============== PAGE 6 ：FORBIDDEN CITY ============== -->
+    <section id="gugong" class="page gugong">
+      <div class="gugong-bg" aria-hidden="true"></div>
+
+      <header class="gallery-header">
+        <p class="kicker dark">FORBIDDEN CITY · 紫禁之巅</p>
+        <h2>故宫 · 红墙金瓦</h2>
+        <p class="gallery-sub">走过六百年的故事，慢慢地走，慢慢地看。</p>
+      </header>
+
+      <div class="grid">
+        <figure class="card reveal">
+          <div class="card-img">
+            <img src="assets/gugong_zbyin.png" alt="故宫红墙前的他" loading="lazy" />
+          </div>
+          <figcaption>
+            <span class="num">01</span>
+            <h3>红墙下的我</h3>
+            <p>站在汉白玉栏杆和石狮子之间，我说下一次来要换龙袍。你说好。</p>
+          </figcaption>
+        </figure>
+
+        <figure class="card reveal">
+          <div class="card-img contain" style="--img: url('assets/gugong_hall.png');">
+            <img src="assets/gugong_hall.png" alt="太和殿前广场" loading="lazy" />
+          </div>
+          <figcaption>
+            <span class="num">02</span>
+            <h3>太和殿前的你</h3>
+            <p>广场太大、太和殿太远，背影里的你很小，但能听见 600 年前的风从耳边吹过去。</p>
+          </figcaption>
+        </figure>
+
+        <figure class="card reveal">
+          <div class="card-img contain" style="--img: url('assets/gugong_lion.png');">
+            <img src="assets/gugong_lion.png" alt="故宫镇门金狮" loading="lazy" />
+          </div>
+          <figcaption>
+            <span class="num">03</span>
+            <h3>镇门金狮</h3>
+            <p>守了几百年的金狮子，看每一个进来的人，神情都像在说："你也来啦。"</p>
+          </figcaption>
+        </figure>
+
+        <figure class="card reveal">
+          <div class="card-img contain" style="--img: url('assets/gugong_jade.png');">
+            <img src="assets/gugong_jade.png" alt="陈列柜里的玉器" loading="lazy" />
+          </div>
+          <figcaption>
+            <span class="num">04</span>
+            <h3>玻璃柜里的玉</h3>
+            <p>陈列柜里安静躺着的几件玉器，几百年前的小心思，今天被我们俩多看了几眼。</p>
+          </figcaption>
+        </figure>
+      </div>
+
+    </section>
+
+    <!-- ============== PAGE 7 ：CHENGDE ============== -->
+    <section id="chengde" class="page chengde">
+      <div class="chengde-bg" aria-hidden="true"></div>
+
+      <header class="gallery-header">
+        <p class="kicker dark">CHENGDE · 草原 · 夕阳</p>
+        <h2>承德 · 草原与夕阳</h2>
+        <p class="gallery-sub">草原很大，风很自由，太阳落得很慢。</p>
+      </header>
+
+      <div class="grid">
+        <figure class="card reveal">
+          <div class="card-img">
+            <img src="assets/chengde_zbyin.png" alt="草原上的他" loading="lazy" />
+          </div>
+          <figcaption>
+            <span class="num">01</span>
+            <h3>草地上的我</h3>
+            <p>白色墨镜、蓝色牛仔，比了一个不知道是什么意思但笑得很骄傲的手势。</p>
+          </figcaption>
+        </figure>
+
+        <figure class="card reveal">
+          <div class="card-img">
+            <img src="assets/chengde_flowers.png" alt="紫色花海中的我" loading="lazy" />
+          </div>
+          <figcaption>
+            <span class="num">02</span>
+            <h3>紫色花海</h3>
+            <p>整片山坡都是紫的，连风都被染了颜色。白裙子、草帽、远处的人都成了背景。</p>
+          </figcaption>
+        </figure>
+
+        <figure class="card reveal">
+          <div class="card-img">
+            <img src="assets/chengde_archery.png" alt="射箭的我" loading="lazy" />
+          </div>
+          <figcaption>
+            <span class="num">03</span>
+            <h3>第一次射箭</h3>
+            <p>瞄了好久，结果还是脱靶了。但那一刻像极了电影里某个意气风发的镜头。</p>
+          </figcaption>
+        </figure>
+
+        <figure class="card reveal">
+          <div class="card-img contain" style="--img: url('assets/chengde_sunset.png');">
+            <img src="assets/chengde_sunset.png" alt="夕阳下牵手的我们" loading="lazy" />
+          </div>
+          <figcaption>
+            <span class="num">04</span>
+            <h3>走向太阳</h3>
+            <p>红色的木桥一直延伸到湖里。我们一边走，太阳一边落。手没有松开。</p>
+          </figcaption>
+        </figure>
+      </div>
+
+    </section>
+
+    <!-- ============== PAGE 8 ：SHENZHEN BAY · NIGHT ============== -->
+    <section id="shenzhen" class="page shenzhen">
+      <div class="shenzhen-bg" aria-hidden="true"></div>
+      <div class="shenzhen-skyline" aria-hidden="true"></div>
+
+      <header class="gallery-header light">
+        <p class="kicker">SHENZHEN · 夜里的湾</p>
+        <h2>深圳环海 · 夜里的湾</h2>
+        <p class="gallery-sub">海风、远处亮着的楼、和我们俩的影子。</p>
+      </header>
+
+      <div class="grid">
+        <figure class="card dark reveal">
+          <div class="card-img">
+            <img src="assets/shenzhen_bike.png" alt="夜骑深圳湾的合影" loading="lazy" />
+          </div>
+          <figcaption>
+            <span class="num">01</span>
+            <h3>夜骑环海</h3>
+            <p>你骑在前面，我在后面比V。深圳湾的夜风吹得人想笑。</p>
+          </figcaption>
+        </figure>
+
+        <figure class="card dark reveal">
+          <div class="card-img contain" style="--img: url('assets/shenzhen_bay.png');">
+            <img src="assets/shenzhen_bay.png" alt="夜里的深圳湾" loading="lazy" />
+          </div>
+          <figcaption>
+            <span class="num">02</span>
+            <h3>柳树后的湾</h3>
+            <p>柳叶被路灯照成金色，远处的楼隐在夜雾里——这一幕安静得像电影画面。</p>
+          </figcaption>
+        </figure>
+
+        <figure class="card dark reveal">
+          <div class="card-img">
+            <img src="assets/shenzhen_zbyin.png" alt="礁石上的他" loading="lazy" />
+          </div>
+          <figcaption>
+            <span class="num">03</span>
+            <h3>我这一边</h3>
+            <p>我站在礁石上看远处的楼，你说我像在等什么人。其实我在等你也走过来。</p>
+          </figcaption>
+        </figure>
+
+        <figure class="card dark reveal">
+          <div class="card-img">
+            <img src="assets/shenzhen_my.png" alt="礁石上的我" loading="lazy" />
+          </div>
+          <figcaption>
+            <span class="num">04</span>
+            <h3>你那一边</h3>
+            <p>下一秒我按下快门——同一片海，换你站在这里回头看我。这是我们的暗号。</p>
+          </figcaption>
+        </figure>
+      </div>
+
+    </section>
+
+    <!-- ============== PAGE 9 ：LAOJIU CONCERT ============== -->
+    <section id="laojiu" class="page laojiu">
+      <div class="laojiu-bg" aria-hidden="true"></div>
+      <div class="laojiu-beams" aria-hidden="true"></div>
+
+      <header class="gallery-header light">
+        <p class="kicker">宝石GEM · 老舅 · LIVE</p>
+        <h2>老舅演唱会 · 灯亮起来那一刻</h2>
+        <p class="gallery-sub">灯光、低音、和你 —— 那一晚最美好的三件事。</p>
+      </header>
+
+      <div class="grid">
+        <figure class="card dark reveal">
+          <div class="card-img">
+            <img src="assets/laojiu_hype.png" alt="出发前在厨房热身" loading="lazy" />
+          </div>
+          <figcaption>
+            <span class="num">01</span>
+            <h3>演前热身</h3>
+            <p>BUY 卫衣、反戴帽子，出门前先在厨房把整张专辑跳一遍。今天必须 high。</p>
+          </figcaption>
+        </figure>
+
+        <figure class="card dark reveal">
+          <div class="card-img">
+            <img src="assets/laojiu_poster.png" alt="和老舅海报合影" loading="lazy" />
+          </div>
+          <figcaption>
+            <span class="num">02</span>
+            <h3>和老舅"合影"</h3>
+            <p>巨大海报上是老舅，地上的你和他比了同一只手。最近的一次合影了。</p>
+          </figcaption>
+        </figure>
+
+        <figure class="card dark reveal">
+          <div class="card-img contain" style="--img: url('assets/laojiu_arena.png');">
+            <img src="assets/laojiu_arena.png" alt="演唱会场馆" loading="lazy" />
+          </div>
+          <figcaption>
+            <span class="num">03</span>
+            <h3>红色的海洋</h3>
+            <p>一整片红色的座椅。灯一暗下来，整个场馆同时尖叫——比任何前奏都大声。</p>
+          </figcaption>
+        </figure>
+
+        <figure class="card dark reveal">
+          <div class="card-img">
+            <img src="assets/laojiu_mirror.png" alt="散场后的哈哈镜合影" loading="lazy" />
+          </div>
+          <figcaption>
+            <span class="num">04</span>
+            <h3>散场之后</h3>
+            <p>路边那面奇形怪状的镜子把我们俩拍成了哈哈镜版本。耳朵还在嗡嗡响，但很快乐。</p>
+          </figcaption>
+        </figure>
+      </div>
+
+    </section>
+
+    <!-- ============== PAGE 9 ：SHANGHAI DISNEY ============== -->
+    <section id="disney" class="page disney">
+      <div class="disney-bg" aria-hidden="true"></div>
+      <div class="disney-sparkles" aria-hidden="true"></div>
+
+      <header class="gallery-header">
+        <p class="kicker dark">SHANGHAI DISNEY · 动物城警局 Z-001</p>
+        <h2>迪士尼 · 我们成了警察 Z-001</h2>
+        <p class="gallery-sub">童话和动物城连在一起，那一天我们成了警察 Z-001。</p>
+      </header>
+
+      <div class="grid">
+        <figure class="card reveal">
+          <div class="card-img">
+            <img src="assets/disney_tickets.png" alt="上海迪士尼度假区门票" loading="lazy" />
+          </div>
+          <figcaption>
+            <span class="num">01</span>
+            <h3>米奇米妮门票</h3>
+            <p>红砖拱门下，两张印着米奇和米妮的小卡片在手心里。这一天正式开始。</p>
+          </figcaption>
+        </figure>
+
+        <figure class="card reveal">
+          <div class="card-img contain" style="--img: url('assets/disney_bogo.png');">
+            <img src="assets/disney_bogo.png" alt="动物城警局牛局长" loading="lazy" />
+          </div>
+          <figcaption>
+            <span class="num">02</span>
+            <h3>牛局长讲话</h3>
+            <p>动物城警局的水牛局长站在讲台后念警情通报，我憋了半天没敢笑出声。</p>
+          </figcaption>
+        </figure>
+
+        <figure class="card reveal">
+          <div class="card-img contain" style="--img: url('assets/disney_gazelle.png');">
+            <img src="assets/disney_gazelle.png" alt="羚羊歌手 Gazelle 演唱会" loading="lazy" />
+          </div>
+          <figcaption>
+            <span class="num">03</span>
+            <h3>Gazelle 登场</h3>
+            <p>红裙羚羊歌手登场，三只老虎伴舞——前后我们看了两次，整场都在跟着甩。</p>
+          </figcaption>
+        </figure>
+
+        <figure class="card reveal">
+          <div class="card-img contain" style="--img: url('assets/disney_ride.png');">
+            <img src="assets/disney_ride.png" alt="疯狂动物城热力追踪 Z-001 警车" loading="lazy" />
+          </div>
+          <figcaption>
+            <span class="num">04</span>
+            <h3>Z-001 警车</h3>
+            <p>下车那一刻屏幕里弹出 Z-001 警车上的合影，整车人都笑得乱七八糟。</p>
+          </figcaption>
+        </figure>
+      </div>
+
+    </section>
+
+    <!-- ============== PAGE 10 ：XU SONG · 呼吸之野 LIVE ============== -->
+    <section id="xusong" class="page xusong">
+      <div class="xusong-bg" aria-hidden="true"></div>
+      <div class="xusong-fireflies" aria-hidden="true"></div>
+
+      <header class="gallery-header light">
+        <p class="kicker">XU SONG · 呼吸之野 · STADIUM TOUR</p>
+        <h2>许嵩 · 呼吸之野</h2>
+        <p class="gallery-sub">「当生日遇上呼吸之野」 —— 2025 年最贵的生日礼物。</p>
+      </header>
+
+      <div class="grid">
+        <figure class="card dark reveal">
+          <div class="card-img contain" style="--img: url('assets/xusong_stage.png');">
+            <img src="assets/xusong_stage.png" alt="呼吸之野舞台全景" loading="lazy" />
+          </div>
+          <figcaption>
+            <span class="num">01</span>
+            <h3>呼吸之野 · 06.28</h3>
+            <p>整个体育场亮起绿色的舞台灯，像一片夜里的森林，等着许嵩从中央走出来。</p>
+          </figcaption>
+        </figure>
+
+        <figure class="card dark reveal">
+          <div class="card-img contain" style="--img: url('assets/xusong_birthday.png');">
+            <img src="assets/xusong_birthday.png" alt="当生日遇上呼吸之野" loading="lazy" />
+          </div>
+          <figcaption>
+            <span class="num">02</span>
+            <h3>当生日遇上呼吸之野</h3>
+            <p>大屏幕上写着「当生日遇上呼吸之野」。你转头看向我，我说"那今天是给你过生日"。</p>
+          </figcaption>
+        </figure>
+
+        <figure class="card dark reveal">
+          <div class="card-img">
+            <img src="assets/xusong_selfie.png" alt="演唱会合影" loading="lazy" />
+          </div>
+          <figcaption>
+            <span class="num">03</span>
+            <h3>灯下的我们</h3>
+            <p>密密麻麻的暖灯像挂了一整片银河。我在旁边，你笑得已经合不拢嘴。</p>
+          </figcaption>
+        </figure>
+
+        <figure class="card dark reveal">
+          <div class="card-img">
+            <img src="assets/xusong_singer.png" alt="许嵩 · 红玫瑰画框" loading="lazy" />
+          </div>
+          <figcaption>
+            <span class="num">04</span>
+            <h3>红玫瑰画框</h3>
+            <p>舞台中央许嵩被一框红玫瑰围住，光打下来那一刻，整个体育场都安静地看着。</p>
+          </figcaption>
+        </figure>
+      </div>
+
+    </section>
+
+    <!-- ============== PAGE 11 ：NANYANG · YOUR HOMETOWN ============== -->
+    <section id="nanyang" class="page nanyang">
+      <div class="nanyang-bg" aria-hidden="true"></div>
+
+      <header class="gallery-header">
+        <p class="kicker dark">NANYANG · 你的老家</p>
+        <h2>南阳 · 你长大的地方</h2>
+        <p class="gallery-sub">顺着你走过的山路，去看看那个曾经住着小小的你的地方。</p>
+      </header>
+
+      <div class="grid">
+        <figure class="card reveal">
+          <div class="card-img">
+            <img src="assets/nanyang_path.png" alt="山路上的我" loading="lazy" />
+          </div>
+          <figcaption>
+            <span class="num">01</span>
+            <h3>你带我走的山路</h3>
+            <p>太阳很大，半坡上的风也大，你顺手从树上摘了一片叶子拿在手里，拍下了这张乱跑的笑。</p>
+          </figcaption>
+        </figure>
+
+        <figure class="card reveal">
+          <div class="card-img contain" style="--img: url('assets/nanyang_badger.png');">
+            <img src="assets/nanyang_badger.png" alt="路边遇见的猪獾" loading="lazy" />
+          </div>
+          <figcaption>
+            <span class="num">02</span>
+            <h3>拐角遇见獾</h3>
+            <p>拐过山路就和它打了个照面。它瞪着我，我瞪着它，你淡定地说："老家常见。"</p>
+          </figcaption>
+        </figure>
+
+        <figure class="card reveal">
+          <div class="card-img">
+            <img src="assets/nanyang_cherry.png" alt="山樱桃" loading="lazy" />
+          </div>
+          <figcaption>
+            <span class="num">03</span>
+            <h3>山樱桃</h3>
+            <p>红得发亮，伸手就能摘。你说小时候每到这个季节都吃这种，是属于你这个地方的甜。</p>
+          </figcaption>
+        </figure>
+
+        <figure class="card reveal">
+          <div class="card-img contain" style="--img: url('assets/nanyang_family.png');">
+            <img src="assets/nanyang_family.png" alt="内乡县署门口的合影" loading="lazy" />
+          </div>
+          <figcaption>
+            <span class="num">04</span>
+            <h3>内乡县署</h3>
+            <p>夜里的县署亮着灯，和小外甥们一起站在门口。原来你是从这里长出来的人。</p>
+          </figcaption>
+        </figure>
+      </div>
+
+    </section>
+
+    <!-- ============== PAGE 11 ：JIXI · MY HOMETOWN ============== -->
+    <section id="jixi" class="page jixi">
+      <div class="jixi-bg" aria-hidden="true"></div>
+
+      <header class="gallery-header">
+        <p class="kicker dark">JIXI · 我的老家</p>
+        <h2>鸡西 · 我长大的地方</h2>
+        <p class="gallery-sub">这次轮到你看看那个曾经住着小小的我的地方。</p>
+      </header>
+
+      <div class="grid">
+        <figure class="card reveal">
+          <div class="card-img">
+            <img src="assets/jixi_liangpi.png" alt="兴凯湖边的我们" loading="lazy" />
+          </div>
+          <figcaption>
+            <span class="num">01</span>
+            <h3>兴凯湖边的我们</h3>
+            <p>我家也有"海"——其实它是个湖，只是浪声大得跟真的一样。带你来看看。</p>
+          </figcaption>
+        </figure>
+
+        <figure class="card reveal">
+          <div class="card-img contain" style="--img: url('assets/jixi_family.png');">
+            <img src="assets/jixi_bbq.png" alt="和家人的合影" loading="lazy" />
+          </div>
+          <figcaption>
+            <span class="num">02</span>
+            <h3>和家人在沙滩上</h3>
+            <p>海风把头发吹得乱七八糟，但每个人都笑得很大声。</p>
+          </figcaption>
+        </figure>
+
+        <figure class="card reveal">
+          <div class="card-img">
+            <img src="assets/jixi_family.png" alt="一碗冰镇凉皮" loading="lazy" />
+          </div>
+          <figcaption>
+            <span class="num">03</span>
+            <h3>家门口的刀削面</h3>
+            <p>红油辣、醋够酸、冰冰凉，一口下去你眼睛瞬间睁大，然后说"再来一碗"。</p>
+          </figcaption>
+        </figure>
+
+        <figure class="card reveal">
+          <div class="card-img">
+            <img src="assets/jixi_couple.png" alt="夜市烤串" loading="lazy" />
+          </div>
+          <figcaption>
+            <span class="num">04</span>
+            <h3>二姨家的烤串</h3>
+            <p>东北的肉串，颗粒孜然铺得满满当当。我们俩并排坐着，吃到第十串才舍得停。</p>
+          </figcaption>
+        </figure>
+      </div>
+
+    </section>
+
+    <!-- ============== PAGE 12 ：OUR CAT — slideshow + confetti finale ============== -->
+    <section id="cat" class="page cat-page">
+      <div class="cat-bg" aria-hidden="true"></div>
+
+      <header class="cat-header">
+        <p class="kicker dark">OUR LITTLE ONE · 喵</p>
+        <h2>我们家的小家伙</h2>
+        <p class="cat-sub">他参与了这三年里的每一个清晨和晚安。</p>
+      </header>
+
+      <div class="slideshow-stack" id="cat-slideshow">
+        <img src="assets/cat_01.png"     class="slide" alt="" loading="lazy" />
+        <img src="assets/cat_02.png"     class="slide" alt="" loading="lazy" />
+        <img src="assets/cat_03.png"     class="slide" alt="" loading="lazy" />
+        <img src="assets/cat_04.png"     class="slide" alt="" loading="lazy" />
+        <img src="assets/cat_05.png"     class="slide" alt="" loading="lazy" />
+        <img src="assets/cat_06.png"     class="slide" alt="" loading="lazy" />
+        <img src="assets/cat_07.png"     class="slide" alt="" loading="lazy" />
+        <img src="assets/cat_08.png"     class="slide" alt="" loading="lazy" />
+        <img src="assets/cat_09.png"     class="slide" alt="" loading="lazy" />
+        <img src="assets/cat_10.png"     class="slide" alt="" loading="lazy" />
+        <img src="assets/cat_11.png"     class="slide" alt="" loading="lazy" />
+        <img src="assets/cat_12.png"     class="slide" alt="" loading="lazy" />
+        <img src="assets/cat_13.png"     class="slide" alt="" loading="lazy" />
+        <img src="assets/cat_family.png" class="slide is-final" alt="我们仨" loading="lazy" />
+      </div>
+
+      <p class="cat-finale-text" id="cat-finale">三个人的家</p>
+
+      <!-- Particles container — populated by script.js when slideshow ends -->
+      <div class="confetti-layer" id="confetti-layer" aria-hidden="true"></div>
     </section>
   </main>
 

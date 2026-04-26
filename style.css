@@ -90,7 +90,7 @@ a { color: inherit; text-decoration: none; }
 
 .hero-bg {
   position: absolute; inset: 0;
-  background: url("assets/hero_flowers.png") center/cover no-repeat;
+  background: url("assets/flower.png") center/cover no-repeat;
   transform: scale(1.08);
   animation: heroZoom 20s var(--easing) infinite alternate;
   filter: saturate(1.05);
@@ -133,6 +133,24 @@ a { color: inherit; text-decoration: none; }
   animation: fadeUp 1.1s var(--easing) 0.2s forwards;
 }
 .kicker.dark { color: #8c6a3f; }
+
+/* Hero kicker — brighter + glow so it stays readable
+   over the bright daylight area of the hero photo */
+.hero .kicker {
+  color: #ffe8b5;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.5em;
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.85),
+    0 0 14px rgba(0, 0, 0, 0.55);
+  padding: 6px 18px;
+  border: 1px solid rgba(255, 232, 181, 0.55);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
 
 .names {
   font-family: var(--serif-en);
@@ -333,6 +351,30 @@ a { color: inherit; text-decoration: none; }
 }
 .card:hover .card-img img { transform: scale(1.06); }
 
+/* For photos whose aspect ratio differs from the 4/5 frame
+   (e.g. wide group selfies). Letterboxes the image so nothing
+   is cropped, and fills the gap with a soft blurred copy of
+   the same image. Use together with `style="--img:url(...)"`. */
+.card-img.contain {
+  background: #1a1a1a;
+}
+.card-img.contain::before {
+  content: "";
+  position: absolute;
+  inset: -8%;                    /* slight bleed so blur edges aren't visible */
+  background-image: var(--img);
+  background-size: cover;
+  background-position: center;
+  filter: blur(28px) saturate(1.1) brightness(0.85);
+  transform: scale(1.15);
+  z-index: 0;
+}
+.card-img.contain img {
+  position: relative;
+  z-index: 1;
+  object-fit: contain;
+}
+
 .card figcaption {
   padding: 18px 20px 22px;
   display: flex;
@@ -365,26 +407,21 @@ a { color: inherit; text-decoration: none; }
 .card:nth-child(3).is-visible { transition-delay: 0.31s; }
 .card:nth-child(4).is-visible { transition-delay: 0.44s; }
 
-.gallery-footer {
-  margin-top: clamp(20px, 3vh, 32px);
-  text-align: center;
-}
-.back-top {
-  display: inline-block;
-  font-family: var(--serif-cn);
-  font-size: 13px;
-  letter-spacing: 0.4em;
-  padding: 12px 26px;
-  border: 1px solid rgba(0,0,0,0.18);
-  border-radius: 999px;
-  color: #4a4338;
-  transition: all 0.4s var(--easing);
-}
-.back-top:hover {
-  background: var(--ink);
-  color: #fff;
-  border-color: var(--ink);
-  letter-spacing: 0.5em;
+/* Reserve room at the bottom of every gallery-style page so the
+   floating "next station" pill never overlaps the last card. */
+.gallery .grid,
+.seaside .grid,
+.mountain .grid,
+.universe .grid,
+.gugong .grid,
+.chengde .grid,
+.shenzhen .grid,
+.laojiu .grid,
+.disney .grid,
+.xusong .grid,
+.nanyang .grid,
+.jixi .grid {
+  padding-bottom: clamp(56px, 9vh, 96px);
 }
 
 /* ===========================================================
@@ -434,8 +471,7 @@ a { color: inherit; text-decoration: none; }
 }
 
 .seaside .gallery-header,
-.seaside .grid,
-.seaside .gallery-footer {
+.seaside .grid {
   position: relative;
   z-index: 1;
 }
@@ -465,27 +501,921 @@ a { color: inherit; text-decoration: none; }
     0 0 0 1px rgba(233,197,133,0.18);
 }
 
-/* light back-top variant for dark page */
-.back-top.light {
-  color: #f3ecdf;
-  border-color: rgba(243,236,223,0.35);
-}
-.back-top.light:hover {
-  background: #f3ecdf;
-  color: #0b1730;
-  border-color: #f3ecdf;
+/* ===========================================================
+   PAGE 4 — Great Wall (sky + stone, light theme)
+   =========================================================== */
+.mountain {
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+  padding: clamp(28px, 5vh, 56px) clamp(24px, 6vw, 80px);
 }
 
-/* "next station" pill on the gallery page */
-.back-top.next {
-  background: var(--ink);
-  color: #fff;
-  border-color: var(--ink);
+.mountain-bg {
+  position: absolute; inset: 0;
+  background:
+    /* warm stone glow at the bottom */
+    radial-gradient(ellipse at 50% 110%, rgba(201, 163, 106, 0.28), transparent 55%),
+    /* horizon green hint */
+    radial-gradient(ellipse at 0% 90%, rgba(120, 150, 120, 0.18), transparent 55%),
+    /* sky gradient — bright top, warm earth at the bottom */
+    linear-gradient(180deg,
+      #d6e9f5 0%,
+      #e9f1f6 35%,
+      #f3ebdd 70%,
+      #e9d8ba 100%);
+  z-index: 0;
 }
-.back-top.next:hover {
-  background: transparent;
+
+/* slow-drifting cloud layer */
+.mountain-clouds {
+  position: absolute; inset: 0;
+  background-image:
+    radial-gradient(60% 22% at 18% 20%, rgba(255,255,255,0.85), transparent 70%),
+    radial-gradient(50% 18% at 72% 14%, rgba(255,255,255,0.7), transparent 75%),
+    radial-gradient(40% 16% at 45% 30%, rgba(255,255,255,0.55), transparent 75%),
+    radial-gradient(55% 18% at 88% 26%, rgba(255,255,255,0.6), transparent 75%);
+  background-repeat: no-repeat;
+  z-index: 0;
+  animation: cloudsDrift 28s linear infinite alternate;
+  pointer-events: none;
+}
+@keyframes cloudsDrift {
+  from { transform: translateX(-3%); }
+  to   { transform: translateX(3%); }
+}
+
+.mountain .gallery-header,
+.mountain .grid {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===========================================================
+   PAGE 5 — Universal Beijing (snowy + cinematic)
+   =========================================================== */
+.universe {
   color: var(--ink);
-  letter-spacing: 0.5em;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(28px, 5vh, 56px) clamp(24px, 6vw, 80px);
+}
+
+.universe-bg {
+  position: absolute; inset: 0;
+  background:
+    /* warm cinematic glow at the bottom (Mel's Drive-In) */
+    radial-gradient(ellipse at 50% 115%, rgba(217, 122, 122, 0.28), transparent 55%),
+    radial-gradient(ellipse at 90% 10%, rgba(216, 228, 238, 0.55), transparent 60%),
+    /* icy sky → warm cinematic floor */
+    linear-gradient(180deg,
+      #d8e4ee 0%,
+      #e6ecf2 35%,
+      #f0e3d2 80%,
+      #e8caa8 100%);
+  z-index: 0;
+}
+
+/* parallax snowfall — two layers at different sizes/speeds */
+.snow-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.85;
+  background-repeat: repeat;
+}
+
+.snow-1 {
+  background-image:
+    radial-gradient(1.6px 1.6px at 20px 30px, #fff, transparent 70%),
+    radial-gradient(1.2px 1.2px at 90px 65px, #fff, transparent 70%),
+    radial-gradient(2px 2px at 130px 20px, #fff, transparent 70%),
+    radial-gradient(1.4px 1.4px at 60px 110px, #fff, transparent 70%),
+    radial-gradient(1.2px 1.2px at 165px 95px, #fff, transparent 70%),
+    radial-gradient(1.8px 1.8px at 40px 165px, #fff, transparent 70%),
+    radial-gradient(1px 1px at 110px 145px, #fff, transparent 70%),
+    radial-gradient(1.4px 1.4px at 180px 175px, #fff, transparent 70%);
+  background-size: 200px 200px;
+  animation: snowfall-1 16s linear infinite;
+}
+
+.snow-2 {
+  background-image:
+    radial-gradient(1px 1px at 35px 45px, rgba(255,255,255,0.85), transparent 70%),
+    radial-gradient(0.8px 0.8px at 110px 30px, rgba(255,255,255,0.75), transparent 70%),
+    radial-gradient(1.2px 1.2px at 220px 80px, rgba(255,255,255,0.85), transparent 70%),
+    radial-gradient(0.8px 0.8px at 70px 130px, rgba(255,255,255,0.7), transparent 70%),
+    radial-gradient(1px 1px at 180px 160px, rgba(255,255,255,0.8), transparent 70%),
+    radial-gradient(0.8px 0.8px at 260px 200px, rgba(255,255,255,0.7), transparent 70%);
+  background-size: 300px 260px;
+  animation: snowfall-2 26s linear infinite;
+  opacity: 0.65;
+}
+
+@keyframes snowfall-1 {
+  from { background-position: 0 0; }
+  to   { background-position: -30px 200px; }
+}
+@keyframes snowfall-2 {
+  from { background-position: 0 0; }
+  to   { background-position: 40px 260px; }
+}
+
+.universe .gallery-header,
+.universe .grid {
+  position: relative;
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .snow-layer { animation: none; }
+}
+
+/* ===========================================================
+   PAGE 6 — Forbidden City (imperial red + gold, light theme)
+   =========================================================== */
+.gugong {
+  color: #2d1c1c;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(28px, 5vh, 56px) clamp(24px, 6vw, 80px);
+}
+
+.gugong-bg {
+  position: absolute; inset: 0;
+  background:
+    /* imperial red glow top-left, gold glow bottom-right */
+    radial-gradient(ellipse at 15% 0%, rgba(168, 34, 34, 0.16), transparent 55%),
+    radial-gradient(ellipse at 95% 100%, rgba(184, 134, 11, 0.22), transparent 60%),
+    /* warm parchment gradient */
+    linear-gradient(180deg,
+      #f7eee0 0%,
+      #f3e6d0 35%,
+      #ecdcb8 70%,
+      #e0c690 100%);
+  z-index: 0;
+}
+
+.gugong .gallery-header,
+.gugong .grid {
+  position: relative;
+  z-index: 1;
+}
+
+/* Forbidden City uses a slightly redder gold for accents */
+.gugong .gallery-header h2::after { background: #a82222; }
+.gugong .card .num                { color: #a82222; }
+.gugong .kicker                   { color: #8a1a1a; }
+
+/* ===========================================================
+   Floating background-music toggle (top-right corner)
+   =========================================================== */
+.music-btn {
+  position: fixed;
+  top: clamp(18px, 3vh, 28px);
+  right: clamp(18px, 3vw, 28px);
+  z-index: 70;
+
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  background: rgba(20, 20, 20, 0.55);
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+
+  backdrop-filter: blur(10px) saturate(1.05);
+  -webkit-backdrop-filter: blur(10px) saturate(1.05);
+  box-shadow: 0 10px 28px -10px rgba(0, 0, 0, 0.55);
+
+  transition:
+    background 0.3s var(--easing),
+    transform  0.3s var(--easing),
+    border-color 0.3s var(--easing);
+}
+.music-btn:hover {
+  background: rgba(0, 0, 0, 0.78);
+  transform: scale(1.06);
+}
+.music-btn .music-icon {
+  display: inline-block;
+  transition: opacity 0.3s ease;
+}
+
+/* When playing, the music note slowly rotates (vinyl-style) */
+.music-btn.is-playing .music-icon {
+  animation: musicSpin 6s linear infinite;
+}
+.music-btn.is-paused .music-icon {
+  opacity: 0.55;
+}
+@keyframes musicSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* On light-themed pages, invert the look so it doesn't dominate */
+.music-btn.on-light {
+  color: #1a1a1a;
+  background: rgba(255, 255, 255, 0.78);
+  border-color: rgba(0, 0, 0, 0.14);
+  box-shadow: 0 10px 28px -10px rgba(0, 0, 0, 0.18);
+}
+.music-btn.on-light:hover {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .music-btn .music-icon { animation: none; }
+}
+
+/* ===========================================================
+   Floating "next station" pill (always visible at bottom)
+   =========================================================== */
+.next-pill {
+  position: fixed;
+  bottom: clamp(20px, 4vh, 36px);
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  z-index: 60;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 24px;
+  border-radius: 999px;
+
+  font-family: var(--serif-cn);
+  font-size: 13px;
+  letter-spacing: 0.32em;
+  text-indent: 0.32em;             /* compensate for letter-spacing visual offset */
+  color: #fff;
+  background: rgba(20, 20, 20, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(10px) saturate(1.05);
+  -webkit-backdrop-filter: blur(10px) saturate(1.05);
+  box-shadow: 0 12px 36px -10px rgba(0, 0, 0, 0.55);
+
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.4s var(--easing),
+    transform 0.4s var(--easing),
+    background 0.3s var(--easing),
+    letter-spacing 0.3s var(--easing);
+}
+.next-pill.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+.next-pill:hover {
+  background: rgba(0, 0, 0, 0.88);
+  letter-spacing: 0.42em;
+}
+.next-pill .next-pill-arrow {
+  display: inline-block;
+  font-size: 15px;
+  line-height: 1;
+  text-indent: 0;
+  letter-spacing: 0;
+  animation: pillBounce 1.6s ease-in-out infinite;
+}
+@keyframes pillBounce {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(4px); }
+}
+
+/* On the last page, the arrow points up — invert the bounce */
+.next-pill.is-up .next-pill-arrow {
+  animation-name: pillBounceUp;
+}
+@keyframes pillBounceUp {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-4px); }
+}
+
+/* On light pages, give the pill a subtle inverted look so it
+   blends instead of dominating */
+.next-pill.on-light {
+  color: #1a1a1a;
+  background: rgba(255, 255, 255, 0.78);
+  border-color: rgba(0, 0, 0, 0.12);
+  box-shadow: 0 12px 36px -10px rgba(0, 0, 0, 0.18);
+}
+.next-pill.on-light:hover {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .next-pill .next-pill-arrow { animation: none; }
+}
+
+/* ===========================================================
+   PAGE 7 — Chengde (grassland + golden hour, light theme)
+   =========================================================== */
+.chengde {
+  color: #2a2a1f;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(28px, 5vh, 56px) clamp(24px, 6vw, 80px);
+}
+
+.chengde-bg {
+  position: absolute; inset: 0;
+  background:
+    /* warm low sun on the right */
+    radial-gradient(ellipse at 80% 55%, rgba(244, 164, 96, 0.32), transparent 55%),
+    /* soft purple flower hint at the bottom-left */
+    radial-gradient(ellipse at 8% 100%, rgba(165, 130, 200, 0.22), transparent 55%),
+    /* soft grass tint at the bottom-right */
+    radial-gradient(ellipse at 100% 100%, rgba(140, 180, 110, 0.32), transparent 60%),
+    /* sky → golden hour → grass */
+    linear-gradient(180deg,
+      #c8dceb 0%,
+      #e0e2d2 35%,
+      #e9d6b5 65%,
+      #c5cf9a 100%);
+  z-index: 0;
+}
+
+.chengde .gallery-header,
+.chengde .grid {
+  position: relative;
+  z-index: 1;
+}
+
+/* Chengde uses a sunset-amber accent */
+.chengde .gallery-header h2::after { background: #d97a2c; }
+.chengde .card .num                { color: #b85f1f; }
+.chengde .kicker                   { color: #7a4a1c; }
+
+/* ===========================================================
+   PAGE 8 — Laojiu concert (stage lights, dark theme)
+   =========================================================== */
+.laojiu {
+  color: #f3ecdf;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(28px, 5vh, 56px) clamp(24px, 6vw, 80px);
+}
+
+/* Deep purple/magenta stage glow */
+.laojiu-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 18% 18%, rgba(216, 70, 200, 0.32), transparent 55%),
+    radial-gradient(ellipse at 85% 78%, rgba(70, 170, 240, 0.26), transparent 55%),
+    radial-gradient(ellipse at 50% 110%, rgba(220, 50, 90, 0.32), transparent 55%),
+    linear-gradient(180deg,
+      #0e0820 0%,
+      #1a0e2e 40%,
+      #2c1140 75%,
+      #3d1130 100%);
+  z-index: 0;
+}
+
+/* Slow sweeping stage-light beams */
+.laojiu-beams {
+  position: absolute; inset: -30%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.55;
+  background:
+    /* magenta beam from top-left */
+    conic-gradient(from 200deg at 22% 0%,
+      transparent 0deg, transparent 165deg,
+      rgba(255, 90, 200, 0.18) 175deg,
+      rgba(255, 90, 200, 0.32) 182deg,
+      rgba(255, 90, 200, 0.18) 189deg,
+      transparent 200deg, transparent 360deg),
+    /* cyan beam from top-right */
+    conic-gradient(from 160deg at 78% 0%,
+      transparent 0deg, transparent 165deg,
+      rgba(80, 180, 255, 0.16) 175deg,
+      rgba(80, 180, 255, 0.30) 182deg,
+      rgba(80, 180, 255, 0.16) 189deg,
+      transparent 200deg, transparent 360deg);
+  animation: beamsSweep 14s ease-in-out infinite alternate;
+  filter: blur(0.5px);
+  mix-blend-mode: screen;
+}
+@keyframes beamsSweep {
+  from { transform: translateX(-2%) rotate(-2deg); }
+  to   { transform: translateX(2%)  rotate(2deg); }
+}
+
+.laojiu .gallery-header,
+.laojiu .grid {
+  position: relative;
+  z-index: 1;
+}
+
+/* Concert-themed neon accents */
+.laojiu .gallery-header h2 { color: #fff0f7; }
+.laojiu .gallery-header h2::after {
+  background: linear-gradient(90deg, #ff5fa0, #5fc3ff);
+  width: 72px;
+  height: 2px;
+}
+.laojiu .gallery-header .gallery-sub { color: rgba(243, 236, 223, 0.8); }
+.laojiu .kicker { color: #ff7fc0; }
+
+/* Override the dark card accent so numbers feel "neon" rather than gold */
+.laojiu .card.dark .num { color: #ff8fc8; }
+.laojiu .card.dark:hover {
+  border-color: rgba(255, 143, 200, 0.35);
+  box-shadow:
+    0 36px 80px -25px rgba(0, 0, 0, 0.85),
+    0 0 0 1px rgba(255, 143, 200, 0.22);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .laojiu-beams { animation: none; }
+}
+
+/* ===========================================================
+   PAGE 9 — Shanghai Disney (storybook pastels + fairy dust)
+   =========================================================== */
+.disney {
+  color: #2a1f2a;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(28px, 5vh, 56px) clamp(24px, 6vw, 80px);
+}
+
+.disney-bg {
+  position: absolute; inset: 0;
+  background:
+    /* pink "Gazelle" glow upper-left */
+    radial-gradient(ellipse at 18% 8%, rgba(214, 96, 184, 0.22), transparent 55%),
+    /* warm gold sparkle bottom-right */
+    radial-gradient(ellipse at 92% 100%, rgba(255, 215, 130, 0.32), transparent 60%),
+    /* castle-blue sky → cinderella pink → soft gold */
+    linear-gradient(180deg,
+      #d8e6f4 0%,
+      #ead6ec 35%,
+      #f7e0d6 70%,
+      #f3d2bc 100%);
+  z-index: 0;
+}
+
+/* drifting fairy-dust particles */
+.disney-sparkles {
+  position: absolute; inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.85;
+  background-image:
+    radial-gradient(1.6px 1.6px at 25px 30px, rgba(255, 215, 100, 0.85), transparent 65%),
+    radial-gradient(1px 1px at 80px 70px, rgba(255, 180, 220, 0.7), transparent 65%),
+    radial-gradient(2px 2px at 130px 50px, rgba(255, 200, 150, 0.85), transparent 65%),
+    radial-gradient(1px 1px at 60px 130px, rgba(255, 150, 220, 0.7), transparent 65%),
+    radial-gradient(1.5px 1.5px at 170px 110px, rgba(255, 220, 130, 0.8), transparent 65%),
+    radial-gradient(1px 1px at 110px 170px, rgba(255, 180, 220, 0.7), transparent 65%);
+  background-size: 220px 220px;
+  background-repeat: repeat;
+  animation: disneySparkle 18s linear infinite;
+}
+@keyframes disneySparkle {
+  /* drift up + slight left, like fairy dust rising */
+  from { background-position: 0 0; }
+  to   { background-position: -50px -220px; }
+}
+
+.disney .gallery-header,
+.disney .grid {
+  position: relative;
+  z-index: 1;
+}
+
+/* Disney pink + gold accents */
+.disney .gallery-header h2 {
+  background: linear-gradient(90deg, #b6479e 0%, #d97a55 60%, #c79341 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.disney .gallery-header h2::after {
+  background: linear-gradient(90deg, #d660b8, #f4b958);
+  width: 72px;
+  height: 2px;
+}
+.disney .gallery-header .gallery-sub { color: #6c4d5a; }
+.disney .kicker { color: #b34c95; }
+.disney .card .num { color: #c2417a; }
+
+@media (prefers-reduced-motion: reduce) {
+  .disney-sparkles { animation: none; }
+}
+
+/* ===========================================================
+   PAGE 10 — Nanyang · your hometown (sun + earth, light theme)
+   =========================================================== */
+.nanyang {
+  color: #2a2418;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(28px, 5vh, 56px) clamp(24px, 6vw, 80px);
+}
+
+.nanyang-bg {
+  position: absolute; inset: 0;
+  background:
+    /* warm midday sun, top-right */
+    radial-gradient(ellipse at 78% 8%, rgba(255, 200, 110, 0.32), transparent 55%),
+    /* leaf-green hint, top-left */
+    radial-gradient(ellipse at 8% 18%, rgba(140, 180, 110, 0.22), transparent 55%),
+    /* mountain-cherry red, bottom-right */
+    radial-gradient(ellipse at 100% 100%, rgba(196, 70, 70, 0.18), transparent 55%),
+    /* sky blue → wheat cream → terracotta */
+    linear-gradient(180deg,
+      #d6e7ee 0%,
+      #f0e7cc 35%,
+      #e8d4a8 65%,
+      #d4a878 100%);
+  z-index: 0;
+}
+
+.nanyang .gallery-header,
+.nanyang .grid {
+  position: relative;
+  z-index: 1;
+}
+
+/* terracotta + cherry accents */
+.nanyang .gallery-header h2::after { background: #b85c3a; }
+.nanyang .card .num                { color: #b8392f; }
+.nanyang .kicker                   { color: #7a3a1a; }
+
+/* ===========================================================
+   PAGE 11 — Jixi · my hometown (cool lake + warm BBQ, light theme)
+   =========================================================== */
+.jixi {
+  color: #2a201a;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(28px, 5vh, 56px) clamp(24px, 6vw, 80px);
+}
+
+.jixi-bg {
+  position: absolute; inset: 0;
+  background:
+    /* cool lake-sky top-left */
+    radial-gradient(ellipse at 18% 0%, rgba(180, 200, 215, 0.36), transparent 55%),
+    /* warm BBQ amber, bottom-right */
+    radial-gradient(ellipse at 100% 100%, rgba(218, 95, 60, 0.30), transparent 55%),
+    /* chili-oil red, bottom-left */
+    radial-gradient(ellipse at 0% 100%, rgba(196, 50, 50, 0.20), transparent 55%),
+    /* cool sky → wheat → BBQ amber */
+    linear-gradient(180deg,
+      #c8d4d8 0%,
+      #dfd0bc 35%,
+      #e6c498 65%,
+      #d99659 100%);
+  z-index: 0;
+}
+
+.jixi .gallery-header,
+.jixi .grid {
+  position: relative;
+  z-index: 1;
+}
+
+/* chili-red + lake-blue accents */
+.jixi .gallery-header h2::after { background: #c84a3a; }
+.jixi .card .num                { color: #c84a3a; }
+.jixi .kicker                   { color: #6f3a30; }
+
+/* ===========================================================
+   PAGE 8 — Shenzhen night bay (city skyline, dark theme)
+   =========================================================== */
+.shenzhen {
+  color: #e6ecf2;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(28px, 5vh, 56px) clamp(24px, 6vw, 80px);
+}
+
+.shenzhen-bg {
+  position: absolute; inset: 0;
+  background:
+    /* warm city-light glow at the horizon (mid-low) */
+    radial-gradient(ellipse at 38% 70%, rgba(255, 168, 95, 0.22), transparent 55%),
+    /* cool moonlight upper right */
+    radial-gradient(ellipse at 78% 18%, rgba(135, 175, 215, 0.18), transparent 55%),
+    /* deep teal water hint, bottom */
+    radial-gradient(ellipse at 50% 105%, rgba(28, 60, 80, 0.45), transparent 55%),
+    /* navy night sky → black bay */
+    linear-gradient(180deg,
+      #0c1525 0%,
+      #14253a 35%,
+      #14283a 65%,
+      #0a1422 100%);
+  z-index: 0;
+}
+
+/* a slim band of twinkling amber "windows" around the horizon line */
+.shenzhen-skyline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 62%;
+  height: 7%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.85;
+  background-image:
+    radial-gradient(1.6px 1.6px at 4% 30%,  rgba(255, 200, 130, 0.95), transparent 60%),
+    radial-gradient(1px 1px at 11% 60%,  rgba(255, 215, 150, 0.7),  transparent 60%),
+    radial-gradient(1.4px 1.4px at 18% 35%, rgba(255, 195, 110, 0.9), transparent 60%),
+    radial-gradient(1.2px 1.2px at 27% 70%, rgba(255, 220, 160, 0.7), transparent 60%),
+    radial-gradient(1.6px 1.6px at 34% 25%, rgba(255, 200, 130, 0.95),transparent 60%),
+    radial-gradient(1.2px 1.2px at 42% 55%, rgba(255, 215, 150, 0.7), transparent 60%),
+    radial-gradient(1.4px 1.4px at 50% 32%, rgba(255, 195, 110, 0.9), transparent 60%),
+    radial-gradient(1.2px 1.2px at 57% 65%, rgba(255, 220, 160, 0.75),transparent 60%),
+    radial-gradient(1.6px 1.6px at 65% 28%, rgba(255, 200, 130, 0.95),transparent 60%),
+    radial-gradient(1.2px 1.2px at 72% 60%, rgba(255, 215, 150, 0.7), transparent 60%),
+    radial-gradient(1.4px 1.4px at 80% 35%, rgba(255, 195, 110, 0.9), transparent 60%),
+    radial-gradient(1.2px 1.2px at 88% 65%, rgba(255, 220, 160, 0.75),transparent 60%),
+    radial-gradient(1.6px 1.6px at 95% 30%, rgba(255, 200, 130, 0.95),transparent 60%);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  animation: shenzhenTwinkle 4.5s ease-in-out infinite alternate;
+  filter: blur(0.4px);
+}
+@keyframes shenzhenTwinkle {
+  from { opacity: 0.55; }
+  to   { opacity: 1;    }
+}
+
+.shenzhen .gallery-header,
+.shenzhen .grid {
+  position: relative;
+  z-index: 1;
+}
+
+/* warm amber + cool teal accents */
+.shenzhen .gallery-header h2 { color: #f0eddf; }
+.shenzhen .gallery-header h2::after {
+  background: linear-gradient(90deg, #ffb878, #7cc6d8);
+  width: 72px;
+  height: 2px;
+}
+.shenzhen .gallery-header .gallery-sub { color: rgba(230, 236, 242, 0.78); }
+.shenzhen .kicker { color: #ffb878; }
+
+.shenzhen .card.dark .num { color: #ffb878; }
+.shenzhen .card.dark:hover {
+  border-color: rgba(255, 184, 120, 0.36);
+  box-shadow:
+    0 36px 80px -25px rgba(0, 0, 0, 0.85),
+    0 0 0 1px rgba(255, 184, 120, 0.22);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shenzhen-skyline { animation: none; }
+}
+
+/* ===========================================================
+   PAGE 10 — Xu Song · 呼吸之野 (forest-green stage, dark theme)
+   =========================================================== */
+.xusong {
+  color: #e8f0e8;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(28px, 5vh, 56px) clamp(24px, 6vw, 80px);
+}
+
+.xusong-bg {
+  position: absolute; inset: 0;
+  background:
+    /* emerald stage glow upper-center (mirrors the green wing lights) */
+    radial-gradient(ellipse at 50% 22%, rgba(76, 217, 168, 0.32), transparent 55%),
+    /* deep red rose accent bottom-left (mirrors the rose-frame moment) */
+    radial-gradient(ellipse at 18% 92%, rgba(200, 58, 58, 0.22), transparent 55%),
+    /* moonlight teal hint right */
+    radial-gradient(ellipse at 92% 70%, rgba(120, 170, 220, 0.14), transparent 55%),
+    /* dark stadium night gradient */
+    linear-gradient(180deg,
+      #0a1416 0%,
+      #112623 35%,
+      #1a3328 70%,
+      #0e1a18 100%);
+  z-index: 0;
+  /* slow "breathing" brightness pulse — ties to 呼吸之野 (breath of the wild) */
+  animation: xusongBreath 9s ease-in-out infinite alternate;
+}
+@keyframes xusongBreath {
+  from { filter: brightness(0.92) saturate(1);    }
+  to   { filter: brightness(1.10) saturate(1.08); }
+}
+
+/* tiny green "fireflies" drifting up — like fans' light sticks rising */
+.xusong-fireflies {
+  position: absolute; inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.85;
+  background-image:
+    radial-gradient(1.8px 1.8px at 25px 30px,  rgba(140, 230, 180, 0.95), transparent 60%),
+    radial-gradient(1.4px 1.4px at 90px 65px,  rgba(120, 220, 170, 0.75), transparent 60%),
+    radial-gradient(2px 2px   at 130px 20px,   rgba(160, 240, 195, 0.85), transparent 60%),
+    radial-gradient(1.4px 1.4px at 60px 110px, rgba(100, 200, 160, 0.7),  transparent 60%),
+    radial-gradient(1.6px 1.6px at 165px 95px, rgba(140, 230, 180, 0.85), transparent 60%),
+    radial-gradient(1.8px 1.8px at 40px 165px, rgba(180, 250, 200, 0.85), transparent 60%),
+    radial-gradient(1.2px 1.2px at 110px 145px,rgba(90, 190, 150, 0.7),   transparent 60%),
+    radial-gradient(1.4px 1.4px at 180px 175px,rgba(140, 230, 180, 0.85), transparent 60%);
+  background-size: 200px 200px;
+  background-repeat: repeat;
+  animation: xusongFireflies 22s linear infinite;
+}
+@keyframes xusongFireflies {
+  /* drifting upward + slight right, like light sticks rising */
+  from { background-position: 0 0; }
+  to   { background-position: 30px -200px; }
+}
+
+.xusong .gallery-header,
+.xusong .grid {
+  position: relative;
+  z-index: 1;
+}
+
+/* concert-themed accents — emerald + rose */
+.xusong .gallery-header h2 { color: #e8f5ee; }
+.xusong .gallery-header h2::after {
+  background: linear-gradient(90deg, #4cd9a8, #ff7b7b);
+  width: 72px;
+  height: 2px;
+}
+.xusong .gallery-header .gallery-sub { color: rgba(232, 240, 232, 0.78); }
+.xusong .kicker { color: #7ee5b6; }
+
+.xusong .card.dark .num { color: #7ee5b6; }
+.xusong .card.dark:hover {
+  border-color: rgba(126, 229, 182, 0.36);
+  box-shadow:
+    0 36px 80px -25px rgba(0, 0, 0, 0.85),
+    0 0 0 1px rgba(126, 229, 182, 0.22);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .xusong-bg,
+  .xusong-fireflies { animation: none; }
+}
+
+/* ===========================================================
+   PAGE 12 — Our cat (auto slideshow + confetti finale)
+   =========================================================== */
+.cat-page {
+  color: #2a1a25;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: clamp(28px, 5vh, 56px) clamp(20px, 5vw, 60px);
+  text-align: center;
+}
+
+.cat-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 22% 14%, rgba(255, 200, 220, 0.42), transparent 55%),
+    radial-gradient(ellipse at 82% 88%, rgba(255, 220, 195, 0.45), transparent 55%),
+    radial-gradient(ellipse at 50% 50%, rgba(255, 245, 235, 0.18), transparent 70%),
+    linear-gradient(180deg,
+      #fef0f5 0%,
+      #ffe5ee 35%,
+      #ffe9d6 70%,
+      #ffd4bd 100%);
+  z-index: 0;
+}
+
+.cat-header {
+  position: relative;
+  z-index: 2;
+  margin-bottom: clamp(16px, 2.5vh, 28px);
+}
+.cat-header h2 {
+  font-family: var(--serif-cn);
+  font-weight: 500;
+  font-size: clamp(28px, 3.6vw, 42px);
+  letter-spacing: 0.12em;
+  margin-top: 10px;
+  background: linear-gradient(90deg, #d96792 0%, #e88a7a 50%, #c79341 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.cat-header h2::after {
+  content: "";
+  display: block;
+  width: 56px;
+  height: 2px;
+  background: linear-gradient(90deg, #f08bb1, #f4c062);
+  margin: 14px auto 0;
+}
+.cat-header .kicker { color: #b06079; }
+.cat-header .cat-sub {
+  margin-top: 14px;
+  color: #7a4a5a;
+  letter-spacing: 0.18em;
+  font-size: 14px;
+}
+
+/* slideshow card — single image visible at a time, opacity-cross-fade */
+.slideshow-stack {
+  position: relative;
+  z-index: 2;
+  width: clamp(260px, 42vh, 460px);
+  aspect-ratio: 3 / 4;
+  margin: 0 auto;
+  border-radius: 26px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow:
+    0 30px 60px -22px rgba(180, 90, 130, 0.45),
+    0 0 0 6px rgba(255, 255, 255, 0.7);
+}
+.slideshow-stack .slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.02);
+  transition:
+    opacity 0.5s var(--easing),
+    transform 0.6s var(--easing);
+}
+.slideshow-stack .slide.is-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* "三个人的家" finale text — fades in once the slideshow lands on the last frame */
+.cat-finale-text {
+  position: relative;
+  z-index: 2;
+  margin-top: clamp(16px, 2.5vh, 28px);
+  font-family: var(--serif-cn);
+  font-size: clamp(20px, 2.6vw, 30px);
+  letter-spacing: 0.42em;
+  text-indent: 0.42em;
+  color: #b53a6e;
+  text-shadow: 0 2px 12px rgba(255, 200, 220, 0.6);
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 1s var(--easing), transform 1s var(--easing);
+}
+.cat-page.is-finale .cat-finale-text {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ----- confetti / falling particles ----- */
+.confetti-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 5;
+}
+.confetti-particle {
+  position: absolute;
+  top: -8vh;
+  left: 0;
+  font-size: 22px;
+  line-height: 1;
+  opacity: 0;
+  user-select: none;
+  will-change: transform, opacity;
+  animation:
+    confettiFall var(--dur, 7s) linear forwards,
+    confettiSway var(--sway-dur, 3s) ease-in-out infinite alternate;
+}
+@keyframes confettiFall {
+  0%   { transform: translate3d(0, 0, 0) rotate(0deg);             opacity: 0; }
+  6%   { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translate3d(0, 110vh, 0) rotate(720deg);       opacity: 0; }
+}
+@keyframes confettiSway {
+  from { margin-left: calc(-1 * var(--sway-amp, 30px)); }
+  to   { margin-left: var(--sway-amp, 30px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .confetti-particle {
+    animation-duration: 12s, 6s;
+  }
 }
 
 /* ===========================================================
