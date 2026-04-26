@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MYWang & ZBYin · 我们的故事</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Serif+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Floating navigation dots -->
+  <nav class="dot-nav" aria-label="页面导航">
+    <a href="#hero" class="dot active" data-target="hero" aria-label="首页"></a>
+    <a href="#gallery" class="dot" data-target="gallery" aria-label="798艺术馆"></a>
+  </nav>
+
+  <main class="snap-container">
+    <!-- ============== PAGE 1 ：HERO ============== -->
+    <section id="hero" class="page hero">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-vignette" aria-hidden="true"></div>
+
+      <div class="hero-content">
+        <p class="kicker">SINCE · 2023.07.26</p>
+
+        <h1 class="names">
+          <span class="name">MYWang</span>
+          <span class="amp" aria-hidden="true">
+            <svg viewBox="0 0 32 28" width="36" height="32" fill="none">
+              <path d="M16 26S2 17.5 2 9.5C2 5.36 5.36 2 9.5 2c2.54 0 4.79 1.27 6.5 3.27C17.71 3.27 19.96 2 22.5 2 26.64 2 30 5.36 30 9.5 30 17.5 16 26 16 26Z"
+                    stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="name">ZBYin</span>
+        </h1>
+
+        <p class="tagline">在一起的第</p>
+
+        <div class="counter" aria-live="polite">
+          <span id="days" class="days">0</span>
+          <span class="unit">天</span>
+        </div>
+
+        <p class="sub">
+          <span id="time-detail">—— 个日夜，未完待续 ——</span>
+        </p>
+
+        <a href="#gallery" class="scroll-down" aria-label="向下浏览">
+          <span></span>
+          <span></span>
+          <span></span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============== PAGE 2 ：798 GALLERY ============== -->
+    <section id="gallery" class="page gallery">
+      <header class="gallery-header">
+        <p class="kicker dark">798 ART ZONE · BEIJING</p>
+        <h2>798 艺术馆 · 我们的小展览</h2>
+        <p class="gallery-sub">把那天走过的每一帧，都收进相框里。</p>
+      </header>
+
+      <div class="grid">
+        <figure class="card reveal">
+          <div class="card-img">
+            <img src="assets/798_couple.png" alt="798 街头的行为艺术情侣" loading="lazy" />
+          </div>
+          <figcaption>
+            <span class="num">01</span>
+            <h3>街头的诸神</h3>
+            <p>偶遇这对“雕塑”情侣，白衣胜雪，凝固在午后的 798。我们也忍不住停下脚步。</p>
+          </figcaption>
+        </figure>
+
+        <figure class="card reveal">
+          <div class="card-img">
+            <img src="assets/798_gallery.png" alt="798 艺术中心入口" loading="lazy" />
+          </div>
+          <figcaption>
+            <span class="num">02</span>
+            <h3>红砖与烟囱</h3>
+            <p>798 入口，老厂房的红砖墙映着展览海报。属于这座城市的、慢下来的下午。</p>
+          </figcaption>
+        </figure>
+
+        <figure class="card reveal">
+          <div class="card-img">
+            <img src="assets/798_mural.png" alt="北京主题彩色壁画" loading="lazy" />
+          </div>
+          <figcaption>
+            <span class="num">03</span>
+            <h3>奔跑的北京</h3>
+            <p>戴红帽的女孩穿过 CBD，滑板少年从央视大楼跃过——这就是我们生活的城市。</p>
+          </figcaption>
+        </figure>
+
+        <figure class="card reveal">
+          <div class="card-img">
+            <img src="assets/798_deity.png" alt="蓝绿色金刚画像" loading="lazy" />
+          </div>
+          <figcaption>
+            <span class="num">04</span>
+            <h3>火焰中的金刚</h3>
+            <p>展厅里这幅画看了很久，浓烈的色彩像极了那天我们之间，安静而炽热的心跳。</p>
+          </figcaption>
+        </figure>
+      </div>
+
+      <footer class="gallery-footer">
+        <a href="#hero" class="back-top" aria-label="返回首页">↑ 回到我们的开始</a>
+      </footer>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
