@@ -6,9 +6,10 @@
 
 1. **首页 `#hero`** —— 黑眼菊花田为背景，展示从 `2023-07-26` 至今我们在一起的天数。
 2. **798 艺术馆 `#gallery`** —— 那天在 798 拍下的 4 张照片，每张配一段简短的描述。
+3. **秦皇岛 `#qinhuangdao`** —— 海边之行的 4 张照片，深蓝夜空 + 微光星点的暗色主题。
 
 页面之间使用 CSS `scroll-snap` + `scroll-behavior: smooth` 实现「丝滑」吸附跳转，
-右侧悬浮小圆点 / 键盘上下方向键 / 首页向下箭头 / 底部"回到我们的开始"按钮，
+右侧悬浮小圆点 / 键盘上下方向键 / 首页向下箭头 / 底部跳转按钮，
 都可以触发同一种平滑过渡。
 
 ## 本地预览
@@ -42,7 +43,11 @@ npx serve .
 │   ├── 798_couple.png
 │   ├── 798_gallery.png
 │   ├── 798_mural.png
-│   └── 798_deity.png
+│   ├── 798_deity.png
+│   ├── qhd_day.png
+│   ├── qhd_shadows.png
+│   ├── qhd_night_sea.png
+│   └── qhd_couple.png
 └── README.md
 ```
 

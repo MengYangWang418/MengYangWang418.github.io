@@ -385,6 +385,107 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* ===========================================================
+   PAGE 3 — Qinhuangdao seaside (dark theme)
+   =========================================================== */
+.seaside {
+  color: #f3ecdf;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(28px, 5vh, 56px) clamp(24px, 6vw, 80px);
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+.seaside::-webkit-scrollbar { display: none; }
+
+.seaside-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 110%, rgba(201,163,106,0.18), transparent 55%),
+    linear-gradient(180deg,
+      #050a18 0%,
+      #0b1730 35%,
+      #16264a 70%,
+      #1f3358 100%);
+  z-index: 0;
+}
+
+/* subtle twinkling "stars" using layered radial-gradients */
+.seaside-stars {
+  position: absolute; inset: 0;
+  background-image:
+    radial-gradient(1px 1px at 12% 18%, rgba(255,255,255,0.85), transparent 60%),
+    radial-gradient(1px 1px at 28% 42%, rgba(255,255,255,0.55), transparent 60%),
+    radial-gradient(1.4px 1.4px at 47% 12%, rgba(255,255,255,0.9), transparent 60%),
+    radial-gradient(1px 1px at 65% 28%, rgba(255,255,255,0.6), transparent 60%),
+    radial-gradient(1.2px 1.2px at 82% 9%, rgba(255,255,255,0.85), transparent 60%),
+    radial-gradient(1px 1px at 91% 38%, rgba(255,255,255,0.55), transparent 60%),
+    radial-gradient(1px 1px at 8% 62%, rgba(255,255,255,0.6), transparent 60%),
+    radial-gradient(1.2px 1.2px at 38% 72%, rgba(255,255,255,0.5), transparent 60%);
+  z-index: 0;
+  animation: twinkle 4.5s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+@keyframes twinkle {
+  from { opacity: 0.55; }
+  to   { opacity: 1; }
+}
+
+.seaside .gallery-header,
+.seaside .grid,
+.seaside .gallery-footer {
+  position: relative;
+  z-index: 1;
+}
+
+.gallery-header.light h2 { color: #f6efe2; }
+.gallery-header.light h2::after { background: var(--gold); }
+.gallery-header.light .gallery-sub { color: rgba(243,236,223,0.72); }
+
+/* dark card variant */
+.card.dark {
+  background: rgba(255,255,255,0.045);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow:
+    0 30px 70px -30px rgba(0,0,0,0.7),
+    inset 0 1px 0 rgba(255,255,255,0.05);
+}
+.card.dark figcaption { color: #f3ecdf; }
+.card.dark .num { color: #e9c585; }
+.card.dark h3 { color: #f6efe2; }
+.card.dark p { color: rgba(243,236,223,0.72); }
+.card.dark:hover {
+  border-color: rgba(233,197,133,0.35);
+  box-shadow:
+    0 36px 80px -25px rgba(0,0,0,0.8),
+    0 0 0 1px rgba(233,197,133,0.18);
+}
+
+/* light back-top variant for dark page */
+.back-top.light {
+  color: #f3ecdf;
+  border-color: rgba(243,236,223,0.35);
+}
+.back-top.light:hover {
+  background: #f3ecdf;
+  color: #0b1730;
+  border-color: #f3ecdf;
+}
+
+/* "next station" pill on the gallery page */
+.back-top.next {
+  background: var(--ink);
+  color: #fff;
+  border-color: var(--ink);
+}
+.back-top.next:hover {
+  background: transparent;
+  color: var(--ink);
+  letter-spacing: 0.5em;
+}
+
+/* ===========================================================
    Responsive
    =========================================================== */
 @media (max-width: 1080px) {
