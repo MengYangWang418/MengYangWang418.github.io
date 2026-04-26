@@ -297,6 +297,9 @@ a { color: inherit; text-decoration: none; }
 
 .card {
   background: #fff;
+  /* matches the dark card's 1px border so card-img sizes are pixel-identical
+     across pages with `box-sizing: border-box` */
+  border: 1px solid transparent;
   border-radius: 14px;
   overflow: hidden;
   box-shadow: var(--shadow-soft);
